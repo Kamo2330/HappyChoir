@@ -1,0 +1,40 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+<section class="hero">
+  <div class="container text-center">
+    <h1 class="display-2 fw-bold">Performances & Events</h1>
+    <p class="lead mt-4">Experience our upcoming shows and relive past performances.</p>
+  </div>
+  <div class="music-overlay"></div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+
+    <h2 class="mt-4">Upcoming Shows</h2>
+    <ul>
+      {% for e in upcoming %}
+        <li>{{ e.date|date:"M d, Y" }} • {{ e.venue }} • <strong>{{ e.title }}</strong> {% if e.ticket_url %}• <a href="{{ e.ticket_url }}" target="_blank">Tickets</a>{% endif %}</li>
+      {% empty %}
+        <li>No upcoming shows yet.</li>
+      {% endfor %}
+    </ul>
+
+    <h2 class="mt-4">Past Performances</h2>
+    <ul>
+      {% for e in past %}
+        <li>{{ e.date|date:"M d, Y" }} • {{ e.venue }} • <strong>{{ e.title }}</strong></li>
+      {% empty %}
+        <li>Past events will appear here.</li>
+      {% endfor %}
+    </ul>
+
+    <div class="mt-4">
+      <a class="btn btn-outline-primary" href="https://calendar.google.com" target="_blank">Google Calendar</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+

@@ -1,0 +1,28 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+<section class="hero">
+  <div class="container text-center">
+    <h1 class="display-2 fw-bold">Gallery</h1>
+    <p class="lead mt-4">See photos and videos from our performances and behind the scenes.</p>
+  </div>
+  <div class="music-overlay"></div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row g-3 mt-3">
+      <div class="col-6 col-md-4"><img class="img-fluid rounded" src="/static/sample1.jpg" alt="Performance 1"></div>
+      <div class="col-6 col-md-4"><img class="img-fluid rounded" src="/static/sample2.jpg" alt="Performance 2"></div>
+      <div class="col-6 col-md-4"><img class="img-fluid rounded" src="/static/sample3.jpg" alt="Performance 3"></div>
+    </div>
+
+    <h2 class="mt-5">Videos</h2>
+    <div class="ratio ratio-16x9">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+

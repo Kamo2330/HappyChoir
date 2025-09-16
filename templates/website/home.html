@@ -1,0 +1,121 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+<section class="hero">
+  <div class="container text-center">
+    <h1 class="display-2 fw-bold">Experience the Harmony of Lesedi Show Choir</h1>
+    <p class="lead mt-4">Where German precision meets South African soul. Professional. Passionate. Unforgettable performances.</p>
+    <div class="mt-5">
+      <a href="/bookings/" class="btn btn-primary btn-lg cta-btn me-3">Book Us Now</a>
+      <a href="/performances/" class="btn btn-outline-light btn-lg cta-btn">View Performances</a>
+    </div>
+  </div>
+  <div class="music-overlay"></div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">Latest News & Announcements</h2>
+    <div class="row">
+      {% for item in latest_news %}
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="news-item">
+            <h5 class="fw-bold text-primary">{{ item.title }}</h5>
+            <div class="small text-muted mb-2">{{ item.published_at|date:"F d, Y" }}</div>
+            <p>{{ item.body|truncatewords:25 }}</p>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12">
+          <div class="news-item text-center">
+            <h5 class="text-muted">No news yet</h5>
+            <p class="text-muted">Check back soon for updates about our performances and events.</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+  <div class="container text-center">
+    <h2 class="section-title">Explore Our World</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 text-center p-4">
+          <div class="card-body">
+            <div class="mb-3" style="font-size: 3rem;">🎵</div>
+            <h5 class="card-title">Performances</h5>
+            <p class="card-text">Discover our upcoming shows and past performances</p>
+            <a href="/performances/" class="btn btn-outline-primary">View Events</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 text-center p-4">
+          <div class="card-body">
+            <div class="mb-3" style="font-size: 3rem;">📸</div>
+            <h5 class="card-title">Gallery</h5>
+            <p class="card-text">See photos and videos from our performances</p>
+            <a href="/gallery/" class="btn btn-outline-primary">View Gallery</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 text-center p-4">
+          <div class="card-body">
+            <div class="mb-3" style="font-size: 3rem;">📅</div>
+            <h5 class="card-title">Bookings</h5>
+            <p class="card-text">Hire us for your special event or celebration</p>
+            <a href="/bookings/" class="btn btn-outline-primary">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 text-center p-4">
+          <div class="card-body">
+            <div class="mb-3" style="font-size: 3rem;">👥</div>
+            <h5 class="card-title">About Us</h5>
+            <p class="card-text">Learn about our story, mission, and members</p>
+            <a href="/about/" class="btn btn-outline-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">What People Say</h2>
+    <div class="row">
+      {% for t in testimonials %}
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="testimonial">
+            <blockquote class="blockquote mb-3">
+              <p class="mb-0">"{{ t.quote }}"</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+              <strong>{{ t.author }}</strong>
+              {% if t.source %}<span class="text-muted"> - {{ t.source }}</span>{% endif %}
+            </figcaption>
+          </div>
+        </div>
+      {% empty %}
+        <div class="col-12">
+          <div class="testimonial text-center">
+            <blockquote class="blockquote mb-3">
+              <p class="mb-0 text-muted">"Your testimonial could be here. We'd love to hear from you!"</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+              <strong>Future Client</strong>
+            </figcaption>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+
